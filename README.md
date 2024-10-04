@@ -18,7 +18,6 @@ erDiagram
         string direccion_residencia
         string numero_cedula
         string ciudad_nacimiento
-        string departamento_nacimiento
         date fecha_registro
     }
 

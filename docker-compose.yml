@@ -3,7 +3,7 @@ services:
     container_name: db
     image: postgres:latest
     environment:
-      POSTGRES_DB: sistemas_recargas_viajes
+      POSTGRES_DB: sistema_recargas_viajes
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
