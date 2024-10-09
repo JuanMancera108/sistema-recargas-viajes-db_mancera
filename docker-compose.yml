@@ -9,7 +9,8 @@ services:
     volumes:
       - postgresql_bin:/usr/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
-      - ./sistema-recargas-viajes-db.sql:/docker-entrypoint-initdb.d/sistema-recargas-viajes-db.sql
+      - ./sistema-recargas-viajes-db.sql:/docker-entrypoint-initdb.d/1-sistema-recargas-viajes-db.sql
+      - ./insert_viajes.sql:/docker-entrypoint-initdb.d/2-insert_viajes.sql
       - ./files:/files
     ports:
       - 55432:5432
