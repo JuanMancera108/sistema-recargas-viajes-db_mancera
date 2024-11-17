@@ -3,34 +3,34 @@ services:
     container_name: db
     image: postgres:latest
     environment:
-      POSTGRES_DB: sistema_recargas_viajes
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./db/data:/docker-entrypoint-initdb.d
     ports:
-      - 5432:5432
+      - ${POSTGRES_LISTEN_PORT}:5432
     networks:
       - db
-
+    env_file: .env
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: postgres
-      PGADMIN_LISTEN_PORT: 5050
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+      PGADMIN_CONFIG_SERVER_MODE: ${PGADMIN_CONFIG_SERVER_MODE}
     volumes:
       - postgresql_bin:/usr/lib/postgresql
       - pgadmin_root_prefs:/root/.pgadmin
       - pgadmin_working_dir:/var/lib/pgadmin
       - ./files:/files
     ports:
-      - 5050:5050
+      - ${PGADMIN_LISTEN_PORT}:5050
     networks:
       - db
-
+    env_file: .env
 networks:
   db:
     driver: bridge
