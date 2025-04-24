@@ -10,7 +10,13 @@ CREATE TABLE USUARIOS (
     departamento_nacimiento VARCHAR(100),
     fecha_registro DATE,
     genero CHAR(1),
-    correo_electronico VARCHAR(100)
+    correo_electronico VARCHAR(100),
+    contraseña VARCHAR(100),
+    foto_perfil VARCHAR(500),
+    estado VARCHAR(50),
+    tipo varchar(50),
+    fecha_actualizacion VARCHAR(50),
+    acepta_terminos CHAR(1)
 );
 
 CREATE TABLE TARJETAS (
