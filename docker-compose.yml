@@ -10,7 +10,5 @@ services:
       - ./db/data:/docker-entrypoint-initdb.d
     ports:
       - ${POSTGRES_LISTEN_PORT}:5432
-    networks:
-      - db
     env_file: .env
 
