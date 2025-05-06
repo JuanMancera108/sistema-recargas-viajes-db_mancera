@@ -1,7 +1,7 @@
 services:
   db:
     container_name: db
-    image: postgres:latest
+    image: postgres:16
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -13,33 +13,4 @@ services:
     networks:
       - db
     env_file: .env
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
-      PGADMIN_CONFIG_SERVER_MODE: ${PGADMIN_CONFIG_SERVER_MODE}
-    volumes:
-      - postgresql_bin:/usr/lib/postgresql
-      - pgadmin_root_prefs:/root/.pgadmin
-      - pgadmin_working_dir:/var/lib/pgadmin
-      - ./files:/files
-    ports:
-      - ${PGADMIN_LISTEN_PORT}:5050
-    networks:
-      - db
-    env_file: .env
-networks:
-  db:
-    driver: bridge
-volumes:
-  pgadmin_root_prefs:
-    driver: local
-  pgadmin_working_dir:
-    driver: local
-  postgresql_data:
-    driver: local
-  postgresql_bin:
-    driver: local
+
